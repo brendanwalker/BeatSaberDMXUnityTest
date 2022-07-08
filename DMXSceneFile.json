@@ -8,23 +8,118 @@
          "PanelCount":2,
          "Device":{
             "DeviceIP":"192.128.1.100",
-            "StartUniverse":1,
+            "StartUniverse":7,
             "LedCount":512
          },
          "Name":"Lantern1",
          "Transform":{
-            "XPosMeters":1.0,
-            "YPosMeters":1.0,
-            "ZPosMeters":3.0,
-            "YRotationAngle":0.0
+            "XPosMeters":2.8,
+            "YPosMeters":1.53,
+            "ZPosMeters":-0.41,
+            "YRotationAngle":180.0
+         }
+      },
+      {
+         "PhysicalRadiusMeters":0.051,
+         "PhysicalHightMeters":0.32,
+         "HorizontalPanelPixelCount":16,
+         "VerticalPanelPixelCount":16,
+         "PanelCount":2,
+         "Device":{
+            "DeviceIP":"192.128.1.100",
+            "StartUniverse":11,
+            "LedCount":512
+         },
+         "Name":"Lantern2",
+         "Transform":{
+            "XPosMeters":2.8,
+            "YPosMeters":1.53,
+            "ZPosMeters":-0.97,
+            "YRotationAngle":180.0
+         }
+      },
+      {
+         "PhysicalRadiusMeters":0.051,
+         "PhysicalHightMeters":0.32,
+         "HorizontalPanelPixelCount":16,
+         "VerticalPanelPixelCount":16,
+         "PanelCount":2,
+         "Device":{
+            "DeviceIP":"192.128.1.100",
+            "StartUniverse":15,
+            "LedCount":512
+         },
+         "Name":"Lantern3",
+         "Transform":{
+            "XPosMeters":2.8,
+            "YPosMeters":1.53,
+            "ZPosMeters":-1.53,
+            "YRotationAngle":180.0
+         }
+      },
+      {
+         "PhysicalRadiusMeters":0.051,
+         "PhysicalHightMeters":0.32,
+         "HorizontalPanelPixelCount":16,
+         "VerticalPanelPixelCount":16,
+         "PanelCount":2,
+         "Device":{
+            "DeviceIP":"192.128.1.100",
+            "StartUniverse":19,
+            "LedCount":512
+         },
+         "Name":"Lantern4",
+         "Transform":{
+            "XPosMeters":2.8,
+            "YPosMeters":0.92,
+            "ZPosMeters":-0.41,
+            "YRotationAngle":180.0
+         }
+      },
+      {
+         "PhysicalRadiusMeters":0.051,
+         "PhysicalHightMeters":0.32,
+         "HorizontalPanelPixelCount":16,
+         "VerticalPanelPixelCount":16,
+         "PanelCount":2,
+         "Device":{
+            "DeviceIP":"192.128.1.100",
+            "StartUniverse":23,
+            "LedCount":512
+         },
+         "Name":"Lantern5",
+         "Transform":{
+            "XPosMeters":2.8,
+            "YPosMeters":0.92,
+            "ZPosMeters":-0.97,
+            "YRotationAngle":180.0
+         }
+      },
+      {
+         "PhysicalRadiusMeters":0.051,
+         "PhysicalHightMeters":0.32,
+         "HorizontalPanelPixelCount":16,
+         "VerticalPanelPixelCount":16,
+         "PanelCount":2,
+         "Device":{
+            "DeviceIP":"192.128.1.100",
+            "StartUniverse":27,
+            "LedCount":512
+         },
+         "Name":"Lantern6",
+         "Transform":{
+            "XPosMeters":2.8,
+            "YPosMeters":0.92,
+            "ZPosMeters":-1.53,
+            "YRotationAngle":180.0
          }
       }
    ],
    "GridDefinitions":[
       {
          "Layout":1,
-         "PhysicalWidthMeters":3.0,
-         "PhysicalHightMeters":1.0,
+         "PhysicalWidthMeters":2.3876,
+         "PhysicalHightMeters":1.1684,
          "HorizontalPanelPixelCount":48,
          "VerticalPanelPixelCount":24,
          "Devices":[
@@ -46,9 +141,9 @@
          ],
          "Name":"PixelGrid",
          "Transform":{
-            "XPosMeters":0.0,
-            "YPosMeters":1.0,
-            "ZPosMeters":1.0,
+            "XPosMeters":1.19,
+            "YPosMeters":1.19,
+            "ZPosMeters":0.0,
             "YRotationAngle":90.0
          }
       }

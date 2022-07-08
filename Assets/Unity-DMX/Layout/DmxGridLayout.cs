@@ -28,7 +28,7 @@ public class DmxGridLayoutDefinition : DmxLayoutDefinition
 
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
-[RequireComponent(typeof(CapsuleCollider))]
+[RequireComponent(typeof(BoxCollider))]
 [RequireComponent(typeof(Rigidbody))]
 public class DmxGridLayoutInstance : DmxLayoutInstance
 {
@@ -43,12 +43,10 @@ public class DmxGridLayoutInstance : DmxLayoutInstance
 
     public DmxDeviceInstance[] Devices { get; private set; }
 
-    private MeshFilter meshFilter;
     private MeshRenderer meshRenderer;
-    private CapsuleCollider capsuleCollider;
+    private BoxCollider boxCollider;
 
     private Mesh runtimeMeshData;
-    private Color32[] runtimeColors;
     private byte[] dmxColorData;
 
     private int[] vertexToLEDIndexTable;
@@ -65,7 +63,7 @@ public class DmxGridLayoutInstance : DmxLayoutInstance
         GameObject ownerGameObject = new GameObject(layoutDefinition.Name, componentTypes.ToArray());
         GameObject.DontDestroyOnLoad(ownerGameObject);
 
-        var col = ownerGameObject.GetComponent<CapsuleCollider>();
+        var col = ownerGameObject.GetComponent<BoxCollider>();
         col.isTrigger = true;
 
         var rb = ownerGameObject.GetComponent<Rigidbody>();
@@ -78,7 +76,6 @@ public class DmxGridLayoutInstance : DmxLayoutInstance
         if (shader != null)
         {
             mr.sharedMaterial = new Material(shader);
-
         }
         else
         {
@@ -115,7 +112,7 @@ public class DmxGridLayoutInstance : DmxLayoutInstance
 
     void Awake()
     {
-        capsuleCollider = GetComponent<CapsuleCollider>();
+        boxCollider = GetComponent<BoxCollider>();
         meshFilter = GetComponent<MeshFilter>();
         meshRenderer = GetComponent<MeshRenderer>();
     }
@@ -128,43 +125,12 @@ public class DmxGridLayoutInstance : DmxLayoutInstance
 
     private void OnTriggerEnter(Collider other)
     {
-        HandleColliderOverlap(other.gameObject);
+        ProcessColliderOverlap(other.gameObject);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        HandleColliderOverlap(other.gameObject);
-    }
-
-    public void HandleColliderOverlap(GameObject gameObject)
-    {
-        Vector3 worldSegmentStart;
-        Vector3 worldSegmentEnd;
-        Color32 segmentColor;
-
-        if (BeatSaberDMXController.Instance.GetLedInteractionSegment(
-                    gameObject,
-                    out worldSegmentStart,
-                    out worldSegmentEnd,
-                    out segmentColor))
-        {
-            Vector3 localSegmentStart = this.gameObject.transform.InverseTransformPoint(worldSegmentStart);
-            Vector3 localSegmentEnd = this.gameObject.transform.InverseTransformPoint(worldSegmentEnd);
-            float radius = PluginConfig.Instance.SaberPaintRadius;
-
-            for (int vertexIndex = 0; vertexIndex < runtimeColors.Length; ++vertexIndex)
-            {
-                Vector3 vertex = meshFilter.mesh.vertices[vertexIndex];
-
-                if (DmxDeviceMath.IsPointWithinRadiusOfSegment(localSegmentStart, localSegmentEnd, radius, vertex))
-                {
-                    runtimeColors[vertexIndex].r = Math.Max(runtimeColors[vertexIndex].r, segmentColor.r);
-                    runtimeColors[vertexIndex].g = Math.Max(runtimeColors[vertexIndex].g, segmentColor.g);
-                    runtimeColors[vertexIndex].b = Math.Max(runtimeColors[vertexIndex].r, segmentColor.b);
-                }
-            }
-
-        }
+        ProcessColliderOverlap(other.gameObject);
     }
 
     private void Update()
@@ -309,10 +275,8 @@ public class DmxGridLayoutInstance : DmxLayoutInstance
                 }
             }
 
-            // Create a pill that encapsulated the rectangle
-            capsuleCollider.radius = PhysicalWidthMeters * 0.5f;
-            capsuleCollider.height = PhysicalHightMeters + 2.0f * capsuleCollider.radius;
-            capsuleCollider.direction = 1; // y-axis
+            // Create a box that encapsulates the rectangle
+            boxCollider.size = new Vector3(0.1f, PhysicalHightMeters, PhysicalWidthMeters);
         }
 
         // Create a triangle index array from the grid of vertices
