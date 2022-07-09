@@ -7,8 +7,8 @@
          "VerticalPanelPixelCount":16,
          "PanelCount":2,
          "Device":{
-            "DeviceIP":"192.128.1.100",
-            "StartUniverse":7,
+            "DeviceIP":"lantern1.local",
+            "StartUniverse":10,
             "LedCount":512
          },
          "Name":"Lantern1",
@@ -26,8 +26,8 @@
          "VerticalPanelPixelCount":16,
          "PanelCount":2,
          "Device":{
-            "DeviceIP":"192.128.1.100",
-            "StartUniverse":11,
+            "DeviceIP":"lantern2.local",
+            "StartUniverse":14,
             "LedCount":512
          },
          "Name":"Lantern2",
@@ -45,8 +45,8 @@
          "VerticalPanelPixelCount":16,
          "PanelCount":2,
          "Device":{
-            "DeviceIP":"192.128.1.100",
-            "StartUniverse":15,
+            "DeviceIP":"lantern3.local",
+            "StartUniverse":18,
             "LedCount":512
          },
          "Name":"Lantern3",
@@ -64,8 +64,8 @@
          "VerticalPanelPixelCount":16,
          "PanelCount":2,
          "Device":{
-            "DeviceIP":"192.128.1.100",
-            "StartUniverse":19,
+            "DeviceIP":"lantern4.local",
+            "StartUniverse":22,
             "LedCount":512
          },
          "Name":"Lantern4",
@@ -83,8 +83,8 @@
          "VerticalPanelPixelCount":16,
          "PanelCount":2,
          "Device":{
-            "DeviceIP":"192.128.1.100",
-            "StartUniverse":23,
+            "DeviceIP":"lantern5.local",
+            "StartUniverse":26,
             "LedCount":512
          },
          "Name":"Lantern5",
@@ -102,8 +102,8 @@
          "VerticalPanelPixelCount":16,
          "PanelCount":2,
          "Device":{
-            "DeviceIP":"192.128.1.100",
-            "StartUniverse":27,
+            "DeviceIP":"lantern6.local",
+            "StartUniverse":30,
             "LedCount":512
          },
          "Name":"Lantern6",
@@ -124,18 +124,18 @@
          "VerticalPanelPixelCount":24,
          "Devices":[
             {
-               "DeviceIP":"192.128.1.100",
+               "DeviceIP":"192.168.1.8",
                "StartUniverse":1,
                "LedCount":400
             },
             {
-               "DeviceIP":"192.128.1.100",
-               "StartUniverse":3,
+               "DeviceIP":"192.168.1.142",
+               "StartUniverse":4,
                "LedCount":400
             },
             {
-               "DeviceIP":"192.128.1.100",
-               "StartUniverse":5,
+               "DeviceIP":"192.168.1.199",
+               "StartUniverse":7,
                "LedCount":352
             }
          ],

@@ -143,10 +143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8b03fe496d8e1d4daab962fe6564ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XAmplitude: 0.25
+  XAmplitude: 0
   XPeriod: 5
   YAmplitude: 0.05
-  YPeriod: 1
+  YPeriod: 50
+  SpinPeriod: 10
 --- !u!54 &165123022
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -184,7 +185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165123020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.985, z: 0}
+  m_LocalPosition: {x: 1.19, y: 0.985, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1049489267}
@@ -291,10 +292,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8b03fe496d8e1d4daab962fe6564ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XAmplitude: 0.25
+  XAmplitude: 0
   XPeriod: 5
   YAmplitude: 0.05
-  YPeriod: 1
+  YPeriod: 50
+  SpinPeriod: 10
 --- !u!54 &323817484
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -332,7 +334,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 323817482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 1.007, z: 0}
+  m_LocalPosition: {x: 1.19, y: 1.482, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1077744268}
@@ -646,8 +648,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd36d644ea33a47498f96b8d9594ea67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SaberPaintRadius: 0.02
+  SaberPaintRadius: 0.2
   SaberPaintDecayRate: 2
+  DMXSceneFilePath: DMXSceneFile.json
 --- !u!114 &1598969969
 MonoBehaviour:
   m_ObjectHideFlags: 0

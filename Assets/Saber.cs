@@ -11,6 +11,7 @@ public class Saber : MonoBehaviour
   public float XPeriod = 5;
   public float YAmplitude = 0.05f;
   public float YPeriod = 1;
+  public float SpinPeriod = 1;
   private Vector3 initialPosition;
 
   // Start is called before the first frame update
@@ -23,14 +24,15 @@ public class Saber : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    float xoffset = XAmplitude * Mathf.Sin(Mathf.Repeat(Time.time / XPeriod, 1.0f) * 2.0f * Mathf.PI);
-    float yoffset = YAmplitude * Mathf.Sin(Mathf.Repeat(Time.time / YPeriod, 1.0f) * 2.0f * Mathf.PI);
+    float xoffset = XAmplitude * Mathf.Sin(Mathf.Repeat(Time.time / XPeriod, 1.0f) * 360.0f);
+    float yoffset = YAmplitude * Mathf.Sin(Mathf.Repeat(Time.time / YPeriod, 1.0f) * 360.0f);
 
     gameObject.transform.position = new Vector3(
       initialPosition.x + xoffset,
       initialPosition.y + yoffset,
       initialPosition.z
     );
+    gameObject.transform.rotation= Quaternion.Euler(0.0f, Mathf.Repeat(Time.time / SpinPeriod, 1.0f) * 360.0f, 0.0f);
 
     RefreshSaberLocations();
   }

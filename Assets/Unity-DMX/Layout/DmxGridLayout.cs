@@ -259,7 +259,7 @@ public class DmxGridLayoutInstance : DmxLayoutInstance
             for (int j = 0; j < VerticalPixelCount; ++j)
             {
                 float v = (float)j / (float)(VerticalPixelCount - 1);
-                float y = (v - 0.5f) * PhysicalHightMeters;
+                float y = (0.5f - v) * PhysicalHightMeters;
 
                 for (int i = 0; i < HorizontalPixelCount; ++i)
                 {
