@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using BeatSaberDMX;
 using BeatSaberDMX.Configuration;
+using Unity.Collections;
+using Unity.Jobs;
 using UnityEngine;
 
 public class DmxGridLayoutDefinition : DmxLayoutDefinition
@@ -24,7 +26,6 @@ public class DmxGridLayoutDefinition : DmxLayoutDefinition
 
     public List<DmxDeviceDefinition> Devices { get; set; }
 }
-
 
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
@@ -125,16 +126,88 @@ public class DmxGridLayoutInstance : DmxLayoutInstance
 
     private void OnTriggerEnter(Collider other)
     {
-        ProcessColliderOverlap(other.gameObject);
+        ProcessSegmentColliderOverlap(other.gameObject);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        ProcessColliderOverlap(other.gameObject);
+        ProcessSegmentColliderOverlap(other.gameObject);
+    }
+
+    private void ProcessNoteProjection(Transform NoteTransform, float NoteSize, Color32 NoteColor)
+    {
+        // Get the note position and basis axis
+        Vector3 notePosition = NoteTransform.position;
+        Vector3 noteXAxis = NoteTransform.right;
+        Vector3 noteYAxis = NoteTransform.up;
+        Vector3 noteZAxis = NoteTransform.forward;
+
+        // Get the grid position and basis axis
+        Transform gridChannel= this.gameObject.transform;
+        Vector3 gridCenter = gridChannel.position;
+        Vector3 gridHorizontalAxis = gridChannel.forward; // +Z-axis
+        Vector3 gridVerticalAxis = gridChannel.up; // +Y-axis
+        Vector3 gridNormal = gridChannel.right; // +X-axis
+
+        // Project the note center onto the grid
+        // and compute grid surface 2D coordinates
+        Vector3 noteOffset = notePosition - gridCenter;
+        Vector3 localNotePosOnGrid= Vector3.ProjectOnPlane(noteOffset, gridNormal);        
+        float localNoteHorizPos = Vector3.Dot(localNotePosOnGrid, gridHorizontalAxis);
+        float localNoteVertPos = Vector3.Dot(localNotePosOnGrid, gridVerticalAxis);
+
+        // If the note projection is within the bounds of the grid
+        // do the work of overlapping the note box with the pixel grid
+        float HorizExtents = (PhysicalWidthMeters / 2.0f) + NoteSize;
+        float VertExtents = (PhysicalHightMeters / 2.0f) + NoteSize;
+        if (Mathf.Abs(localNoteHorizPos) <= HorizExtents && Mathf.Abs(localNoteVertPos) <= VertExtents)
+        {
+            Vector3 projectedNoteCenter = gridCenter + localNotePosOnGrid; // Note center projected on grid, world space
+
+            var jobData = new OverlapBoxJob();
+            jobData.boxCenter = gridChannel.InverseTransformPoint(projectedNoteCenter); 
+            jobData.boxXAxis = gridChannel.InverseTransformDirection(noteXAxis);
+            jobData.boxYAxis = gridChannel.InverseTransformDirection(noteYAxis);
+            jobData.boxZAxis = gridChannel.InverseTransformDirection(noteZAxis);
+            jobData.boxExtents = new Vector3(NoteSize, NoteSize, NoteSize);
+            jobData.boxColor= NoteColor;
+            jobData.vertices = new NativeArray<Vector3>(meshFilter.mesh.vertices, Allocator.TempJob);
+            jobData.runtimeColors = new NativeArray<Color32>(runtimeColors, Allocator.TempJob);
+
+            var batchSize = 32;
+            var handle = jobData.Schedule(runtimeColors.Length, batchSize);
+
+            handle.Complete();
+
+            jobData.runtimeColors.CopyTo(runtimeColors);
+
+            jobData.vertices.Dispose();
+            jobData.runtimeColors.Dispose();
+        }
+    }
+
+    private void ProjectNotes()
+    {
+        Color32 ColorA = BeatSaberDMXController.Instance.ColorA;
+        Color32 ColorB = BeatSaberDMXController.Instance.ColorB;
+        float NoteSize = PluginConfig.Instance.NotePaintSize;
+
+        foreach (Transform NoteTransform in BeatSaberDMXController.Instance.ColorANotes)
+        {
+            ProcessNoteProjection(NoteTransform, NoteSize, ColorA);
+        }
+
+        foreach (Transform NoteTransform in BeatSaberDMXController.Instance.ColorBNotes)
+        {
+            ProcessNoteProjection(NoteTransform, NoteSize, ColorB);
+        }
     }
 
     private void Update()
     {
+        // Project the current active set of notes to the pixel grid
+        ProjectNotes();
+
         //Plugin.Log?.Error($"Pixel Grid update");
         float decayParam = Mathf.Clamp01(PluginConfig.Instance.SaberPaintDecayRate * Time.deltaTime);
 

@@ -107,12 +107,12 @@ public class DmxLanternLayoutInstance : DmxLayoutInstance
 
     private void OnTriggerEnter(Collider other)
     {
-        ProcessColliderOverlap(other.gameObject);
+        ProcessSegmentColliderOverlap(other.gameObject);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        ProcessColliderOverlap(other.gameObject);
+        ProcessSegmentColliderOverlap(other.gameObject);
     }
 
     private void Update()

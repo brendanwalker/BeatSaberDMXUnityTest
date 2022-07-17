@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{5B580621-09B4-68CB-B5F4-5B9DD210A60F}</ProjectGuid>
+    <ProjectGuid>{D59B2B36-065E-54F5-8094-96175DC56A60}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -82,25 +82,25 @@
     <Compile Include="Assets\UnityLogAdapter.cs" />
     <None Include="Assets\NewUnlitShader.shader" />
     <Reference Include="UnityEngine.Purchasing">
-      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/UnityProject/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>
+      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
-      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/UnityProject/Library/ScriptAssemblies/UnityEditor.Purchasing.dll</HintPath>
+      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Library/ScriptAssemblies/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/UnityProject/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/UnityProject/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/UnityProject/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/UnityProject/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/UnityProject/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Unity/2018.4.36f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -304,25 +304,25 @@
       <HintPath>C:/Unity/2018.4.36f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Kadmium-sACN">
-      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/UnityProject/Assets/Libraries/Kadmium-sACN.dll</HintPath>
+      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Assets/Libraries/Kadmium-sACN.dll</HintPath>
     </Reference>
     <Reference Include="Kadmium-Udp">
-      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/UnityProject/Assets/Libraries/Kadmium-Udp.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Buffers">
-      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/UnityProject/Assets/Libraries/System.Buffers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Memory">
-      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/UnityProject/Assets/Libraries/System.Memory.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/UnityProject/Assets/Libraries/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/UnityProject/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Assets/Libraries/Kadmium-Udp.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/UnityProject/Assets/Libraries/Newtonsoft.Json.dll</HintPath>
+      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Assets/Libraries/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers">
+      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Assets/Libraries/System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory">
+      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Assets/Libraries/System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Assets/Libraries/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.StandardEvents">
+      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Unity/2018.4.36f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

@@ -53,6 +53,41 @@ struct OverlapSegmentJob : IJobParallelFor
     }
 }
 
+struct OverlapBoxJob : IJobParallelFor
+{
+    [ReadOnly]
+    public Vector3 boxCenter;
+    [ReadOnly]
+    public Vector3 boxXAxis;
+    [ReadOnly]
+    public Vector3 boxYAxis;
+    [ReadOnly]
+    public Vector3 boxZAxis;
+    [ReadOnly]
+    public Vector3 boxExtents;
+    [ReadOnly]
+    public Color32 boxColor;
+    [ReadOnly]
+    public NativeArray<Vector3> vertices;
+    public NativeArray<Color32> runtimeColors;
+
+    public void Execute(int vertexIndex)
+    {
+        Vector3 vertex = vertices[vertexIndex];
+
+        if (DmxDeviceMath.IsPointWithinOrientedBox(boxCenter, boxXAxis, boxYAxis, boxZAxis, boxExtents, vertex))
+        {
+            Color32 color = runtimeColors[vertexIndex];
+
+            color.r = Math.Max(color.r, boxColor.r);
+            color.g = Math.Max(color.g, boxColor.g);
+            color.b = Math.Max(color.r, boxColor.b);
+
+            runtimeColors[vertexIndex] = color;
+        }
+    }
+}
+
 public abstract class DmxLayoutInstance : MonoBehaviour
 {
     public byte[] dmxData = new byte[0];
@@ -84,7 +119,7 @@ public abstract class DmxLayoutInstance : MonoBehaviour
                 Vector3.up);
     }
 
-    public void ProcessColliderOverlap(GameObject gameObject)
+    public void ProcessSegmentColliderOverlap(GameObject gameObject)
     {
         Vector3 worldSegmentStart;
         Vector3 worldSegmentEnd;
