@@ -10,8 +10,7 @@ public class Plugin : MonoBehaviour
     {
         Plugin.Log = new UnityLogAdapter();
 
-        DMXSceneDefinition sceneDef = DMXSceneDefinition.LoadSceneFile(PluginConfig.Instance.DMXSceneFilePath);
-        DmxSceneInstance sceneInstance = new DmxSceneInstance();
-        sceneInstance.Initialize(sceneDef, this.transform);
+        DmxSceneManager.Instance.TryUpdateDMXScenePath();
+        DmxSceneManager.Instance.LoadDMXScene(this.transform);
     }
 }

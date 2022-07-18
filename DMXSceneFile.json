@@ -1,4 +1,10 @@
 {
+   "SceneTransform":{
+      "XPosMeters":0,
+      "YPosMeters":0,
+      "ZPosMeters":0,
+      "YRotationAngle":0.0
+   },
    "LanternDefinitions":[
       {
          "PhysicalRadiusMeters":0.051,

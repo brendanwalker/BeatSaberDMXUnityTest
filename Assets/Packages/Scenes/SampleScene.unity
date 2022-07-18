@@ -787,6 +787,7 @@ GameObject:
   - component: {fileID: 1598969970}
   - component: {fileID: 1598969969}
   - component: {fileID: 1598969968}
+  - component: {fileID: 1598969971}
   m_Layer: 0
   m_Name: Scene
   m_TagString: Untagged
@@ -876,3 +877,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftSaber: {fileID: 165123021}
   rightSaber: {fileID: 323817483}
+--- !u!114 &1598969971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598969965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d1b6ae6cc6fc34596c00a4e3f9faa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
