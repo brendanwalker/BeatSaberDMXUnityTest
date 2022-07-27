@@ -67,8 +67,13 @@
     <Compile Include="Assets\BeatSaberDMXController.cs" />
     <Compile Include="Assets\FlyCam.cs" />
     <Compile Include="Assets\Libraries\Configuration\PluginConfig.cs" />
+    <Compile Include="Assets\MikanXR\MikanAnchor.cs" />
+    <Compile Include="Assets\MikanXR\MikanClient.cs" />
+    <Compile Include="Assets\MikanXR\MikanClientAPI.cs" />
+    <Compile Include="Assets\MikanXR\MikanMath.cs" />
     <Compile Include="Assets\Plugin.cs" />
     <Compile Include="Assets\PluginConfig.cs" />
+    <Compile Include="Assets\PluginUtils.cs" />
     <Compile Include="Assets\Saber.cs" />
     <Compile Include="Assets\SaberManager.cs" />
     <Compile Include="Assets\Unity-DMX\Device\DmxDevice.cs" />
@@ -77,6 +82,7 @@
     <Compile Include="Assets\Unity-DMX\Layout\DmxGridLayout.cs" />
     <Compile Include="Assets\Unity-DMX\Layout\DmxLanternLayout.cs" />
     <Compile Include="Assets\Unity-DMX\Layout\DmxLayout.cs" />
+    <Compile Include="Assets\Unity-DMX\Scene\DmxAvatar.cs" />
     <Compile Include="Assets\Unity-DMX\Scene\DmxScene.cs" />
     <Compile Include="Assets\Unity-DMX\Scene\DmxSceneManager.cs" />
     <Compile Include="Assets\UnityLogAdapter.cs" />
@@ -95,6 +101,9 @@
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AssetBundleBrowser.Editor">
+      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Library/ScriptAssemblies/Unity.AssetBundleBrowser.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
@@ -303,6 +312,15 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Unity/2018.4.36f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="CustomAvatar">
+      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Assets/Libraries/CustomAvatar.dll</HintPath>
+    </Reference>
+    <Reference Include="DynamicBone">
+      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Assets/Libraries/DynamicBone.dll</HintPath>
+    </Reference>
+    <Reference Include="FinalIK">
+      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Assets/Libraries/FinalIK.dll</HintPath>
+    </Reference>
     <Reference Include="Kadmium-sACN">
       <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Assets/Libraries/Kadmium-sACN.dll</HintPath>
     </Reference>
@@ -320,6 +338,9 @@
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
       <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Assets/Libraries/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="Valve.Newtonsoft.Json">
+      <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Assets/SteamVR/Input/Plugins/JSON.NET/Valve.Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>E:/git-BrendanWalker/BeatSaberDMX/BeatSaberDMXUnityTest/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
@@ -669,6 +690,28 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:/Unity/2018.4.36f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="SteamVR_Input_Editor.csproj">
+      <Project>{57341DE5-51B7-AAD0-660A-233FBD51D151}</Project>
+      <Name>SteamVR_Input_Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR_Editor.csproj">
+      <Project>{FA311F38-DF93-E809-23D8-F53DD1F5BFF5}</Project>
+      <Name>SteamVR_Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR.csproj">
+      <Project>{E49B66DF-E6E1-E683-CD2A-FD3A91E7BDBE}</Project>
+      <Name>SteamVR</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR_Actions.csproj">
+      <Project>{5B4057CC-D6C2-9015-4E40-51B401B29FC7}</Project>
+      <Name>SteamVR_Actions</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR_Windows_EditorHelper.csproj">
+      <Project>{4DEDD509-802F-8AF9-43FB-65BC5465CB66}</Project>
+      <Name>SteamVR_Windows_EditorHelper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

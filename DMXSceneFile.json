@@ -6,6 +6,41 @@
       "ZPosMeters":0,
       "YRotationAngle":0.0
    },
+   "AvatarDefinition":{
+      "Name":"SmolCalli",
+      "AssetBundlePath":"C:/tools/BeatSaber/BSLegacyLauncher/Beat Saber/CustomAvatars/Smol Cali.avatar",
+      "AssetName":"_CustomAvatar",
+      "Transform":{
+         "XPosMeters":0.9,
+         "YPosMeters":0.0,
+         "ZPosMeters":-0.9,
+         "YRotationAngle":-60.0
+      },
+      "BlendShapeWeights":{
+         "eyesRound":0.0,
+         "eyesClosed":0.0,
+         "eyesExcited":1.0,
+         "eyesSpark":0.0,
+         "eyesHeart":0.0,
+         "brow":0.0,
+         "browAngry":0.0,
+         "browSad":0.0,
+         "eyesbrowUnamused":0.0,
+         "eyesbrowCartoondead":0.0,
+         "mouthSad":0.0,
+         "mouthPursed":0.0,
+         "mouthOpen":0.0,
+         "mouthOpenRound":0.0,
+         "mouthOpenSquare":0.0,
+         "mouthOpenDistressed":0.0,
+         "mouthCat":0.0,
+         "mouthCatOpen":0.0,
+         "mouthMogumogu":0.0,
+         "blushLines":0.0,
+         "blushRound":0.0
+      },
+      "SpawnAsset":true
+   },
    "LanternDefinitions":[
       {
          "PhysicalRadiusMeters":0.051,

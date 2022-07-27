@@ -12,6 +12,7 @@ public class DMXSceneDefinition
     public DmxTransform SceneTransform { get; set; }
     public List<DmxLanternLayoutDefinition> LanternDefinitions { get; set; }
     public List<DmxGridLayoutDefinition> GridDefinitions { get; set; }
+    public DmxAvatarDefinition AvatarDefinition { get; set; }
 
     public static DMXSceneDefinition LoadSceneFile(string scenePath)
     {
@@ -57,11 +58,12 @@ public class DMXSceneDefinition
 
 public class DmxSceneInstance
 {
-    private bool _isVisible = true;
+    private bool _isDmxLayoutVisible = true;
     private Transform _gameOrigin = null;
     private GameObject _sceneOrigin = null;
     private Dictionary<string, DmxLayoutDefinition> _layoutDefinitions = new Dictionary<string, DmxLayoutDefinition>();
     private Dictionary<string, DmxLayoutInstance> _layoutInstances = new Dictionary<string, DmxLayoutInstance>();
+    private DmxAvatarInstance _avatarInstance = null;
 
     public void Initialize(DMXSceneDefinition sceneDefinition, Transform gameOrigin)
     {
@@ -81,18 +83,24 @@ public class DmxSceneInstance
         }
 
         // Update scene visibility after everything is spawned
-        SetSceneVisibility(sceneDefinition.IsVisible);            
+        SetDmxLayoutVisibility(sceneDefinition.IsVisible);
+
+        // Create the avatar if enabled
+        SpawnAvatarInstance(sceneDefinition.AvatarDefinition);
     }
 
-    public void SetSceneVisibility(bool bNewIsVisible)
+    public void SetDmxLayoutVisibility(bool bNewIsVisible)
     {
-        Renderer[] renderers = _sceneOrigin.GetComponentsInChildren<Renderer>();
-        foreach (Renderer childRenderer in renderers)
+        foreach (DmxLayoutInstance layoutInstance in _layoutInstances.Values)
         {
-            childRenderer.enabled = bNewIsVisible;
+            Renderer[] renderers = layoutInstance.gameObject.GetComponentsInChildren<Renderer>();
+            foreach (Renderer childRenderer in renderers)
+            {
+                childRenderer.enabled = bNewIsVisible;
+            }
         }
 
-        _isVisible = bNewIsVisible;
+        _isDmxLayoutVisible = bNewIsVisible;
     }
 
     public void SetDMXTransform(DmxTransform transform)
@@ -155,7 +163,17 @@ public class DmxSceneInstance
         }
 
         // Update scene visibility after everything is spawned / despawned
-        SetSceneVisibility(sceneDefinition.IsVisible);
+        SetDmxLayoutVisibility(sceneDefinition.IsVisible);
+
+        // Spawn/Patch Avatar
+        if (_avatarInstance == null)
+        {
+            SpawnAvatarInstance(sceneDefinition.AvatarDefinition);
+        }
+        else
+        {
+            _avatarInstance.Patch(sceneDefinition.AvatarDefinition);
+        }
     }
 
     public void Dispose()
@@ -167,6 +185,8 @@ public class DmxSceneInstance
         }
         _layoutInstances.Clear();
         _layoutDefinitions.Clear();
+
+        DespawnAvatarInstance();
 
         GameObject.Destroy(_sceneOrigin);
         _sceneOrigin = null;
@@ -203,5 +223,25 @@ public class DmxSceneInstance
         Plugin.Log?.Info($"Despawned Lantern {instance.gameObject.name}");
         _layoutInstances.Remove(instance.gameObject.name);
         GameObject.Destroy(instance.gameObject);
+    }
+
+    void SpawnAvatarInstance(DmxAvatarDefinition definition)
+    {
+        if (_avatarInstance != null)
+        {
+            DespawnAvatarInstance();
+        }
+
+        _avatarInstance = DmxAvatarInstance.SpawnInstance(definition, _sceneOrigin.transform);
+    }
+
+    void DespawnAvatarInstance()
+    {
+        if (_avatarInstance != null)
+        {
+            Plugin.Log?.Info($"Despawned Avatar {_avatarInstance.gameObject.name}");
+            GameObject.Destroy(_avatarInstance.gameObject);
+            _avatarInstance = null;
+        }
     }
 }
